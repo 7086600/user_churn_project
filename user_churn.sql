@@ -132,14 +132,16 @@ status AS
   END AS 'is_active_30',
   -- add column is_canceled_87 by CASE
   CASE
-    WHEN subscription_end BETWEEN first_day AND last_day
-      THEN 1
+    WHEN (segment = 87) 
+      AND (subscription_end BETWEEN first_day AND last_day)
+        THEN 1
     ELSE 0
   END AS 'is_canceled_87',
   -- add column is_canceled_30 by CASE
   CASE
-    WHEN subscription_end BETWEEN first_day AND last_day
-      THEN 1
+    WHEN (segment = 30) 
+      AND (subscription_end BETWEEN first_day AND last_day)
+        THEN 1
     ELSE 0
   END AS 'is_canceled_30'
 FROM cross_join)
