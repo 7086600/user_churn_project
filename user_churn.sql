@@ -279,7 +279,7 @@ status_aggregate AS
   SUM(is_canceled_30) AS 'sum_canceled_30'
 FROM status
 GROUP BY 1)
-
+-- final query
 SELECT *,
   ROUND(1.0 * sum_canceled_87 / sum_active_87, 3) AS 'churn_rate_87',
   ROUND(1.0 * sum_canceled_30 / sum_active_30, 3) AS 'churn_rate_30'
