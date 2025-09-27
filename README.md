@@ -21,3 +21,14 @@ Here are the few questions we want to answer:
 
 ## Actions
 Analyze data with SQL queries to answer the questions above.
+
+## Data
+
+The dataset provided to you contains one SQL table, `subscriptions`. Within the table, there are 4 columns:
+
+ - `id` - the subscription id
+ - `subscription_start` - the start date of the subscription
+ - `subscription_end` - the end date of the subscription
+ - `segment` - this identifies which segment the subscription owner belongs to
+
+Codeflix requires a minimum subscription length of 31 days, so a user can never start and end their subscription in the same month.
