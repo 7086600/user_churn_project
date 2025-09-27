@@ -307,7 +307,7 @@ FROM subscriptions
 CROSS JOIN months),
 -- status temp table
 status AS 
-(SELECT id, STRFTIME('%m', first_day) AS 'month', segment,
+(SELECT id, STRFTIME('%Y_%m', first_day) AS 'Year_month', segment,
   -- create is_active column
   CASE
     WHEN (subscription_start < first_day)
@@ -324,9 +324,10 @@ status AS
 FROM cross_join),
 -- status_aggregate temp table
 status_aggregate AS 
-(SELECT month, segment,
+(SELECT Year_month, segment,
   SUM(is_active) AS 'sum_active', 
-  SUM(is_canceled) AS 'sum_canceled'
+  SUM(is_canceled) AS 'sum_canceled',
+  ROUND(1.0 * SUM(is_canceled) / SUM(is_active), 4) AS 'churn_rate'
 FROM status
 GROUP BY 1, 2)
 
