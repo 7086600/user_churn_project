@@ -1,0 +1,2 @@
+SELCT *
+FROM table1;
